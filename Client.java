@@ -32,7 +32,7 @@ public class Client {
     }
 
     // Function to generate a random AES key
-    public SecretKey generateAESKey() throws NoSuchAlgorithmException, Exception{
+    private SecretKey generateAESKey() throws NoSuchAlgorithmException, Exception{
         KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
         keyGenerator.init(128, new SecureRandom());
         SecretKey key = keyGenerator.generateKey();
@@ -49,7 +49,7 @@ public class Client {
     }
 
     // Function to decrypt data using AES
-    public String decrypt(String encryptedMessage, SecretKey key) throws Exception{
+    private String decrypt(String encryptedMessage, SecretKey key) throws Exception{
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.DECRYPT_MODE, key);
         byte[] decryptedMessage = cipher.doFinal(Base64.getDecoder().decode(encryptedMessage));
